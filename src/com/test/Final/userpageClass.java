@@ -11,8 +11,6 @@ import java.sql.ResultSet;
 
 public class userpageClass {
 
-    static String email, password;
-
     public void orderDetails(String cusID, JFrame frame){
         try {
             Connection connection = mysqlClass.getConnection();
@@ -36,7 +34,7 @@ public class userpageClass {
             JOptionPane.showMessageDialog(frame,"Oops !!!\nSomething went Wrong !!!\n"+exception.getMessage());
         }
 
-        }
+    }
 
     private JPanel userPanel;
     private JLabel cusIDlabel;
@@ -83,7 +81,6 @@ public class userpageClass {
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame();
                 orderDetails(id,frame);
-
             }
         });
     }
