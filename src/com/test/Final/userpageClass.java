@@ -21,7 +21,8 @@ public class userpageClass {
     private JScrollPane tablePanel;
     private JFrame userframe;
 
-    public userpageClass(){
+    public userpageClass(String id,String firstName,String lastName,String emailgot){
+
         userframe = new JFrame("Customer Management Services");
         userframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         userframe.setPreferredSize(new Dimension(600, 500));
@@ -33,20 +34,19 @@ public class userpageClass {
         userframe.setLocationRelativeTo(null);
         userframe.setVisible(true);
 
+        cusIDlabel.setText(id);
+        cusNameLabel.setText(firstName+lastName);
+        emailLabel.setText(emailgot);
+
         CANCELButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 userframe.dispose();
                 new loginClass();
             }
         });
     }
 
-    private void createTable() {
-        table1.setModel(new DefaultTableModel(
-                null,
-                new String[] {"Order Number","Date","Amount"}
-        ));
-    }
 }
 

@@ -10,17 +10,25 @@ import java.sql.ResultSet;
 
 public class loginClass {
 
+    static String id,firstName,lastName,emailgot,pword,cont,address;
+
     public void userLogin(String email, char[] password,JFrame msgFrame) {
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "SELECT * FROM `customer-table` WHERE email_Address = ? and Password = ?";
+            String sqlQuery = "SELECT * FROM `customers_table` WHERE email_Address = ? and Password = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,email);
             preparedStatement.setString(2, String.valueOf(password));
 
             ResultSet resultSet = preparedStatement.executeQuery();
+
+            id = resultSet.getString(1);
+            firstName = resultSet.getString(2);
+            lastName = resultSet.getString(3);
+            emailgot = resultSet.getString(5);
+
             int count = 0;
             while (resultSet.next()){
                 count += 1;
@@ -28,9 +36,7 @@ public class loginClass {
             if (count == 1){
                 JOptionPane.showMessageDialog(msgFrame,"Login Successful !!!");
                 loginFrame.dispose();
-                new userpageClass();
-
-
+                new userpageClass(id,firstName,lastName,emailgot);
 
             }else{
                 JOptionPane.showMessageDialog(msgFrame,"ERROR !!!");
@@ -39,7 +45,7 @@ public class loginClass {
             preparedStatement.close();
 
         }catch (Exception exception){
-            JOptionPane.showMessageDialog(msgFrame,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
+            JOptionPane.showMessageDialog(msgFrame,"Oops !!!\nSomething went Wrong !!!\n"+exception.getMessage());
         }
     }
 
@@ -75,6 +81,7 @@ public class loginClass {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
                 loginFrame.dispose();
             }
         });

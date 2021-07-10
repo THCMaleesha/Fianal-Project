@@ -14,7 +14,7 @@ public class userregClass {
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "INSERT INTO `customer-table` (cus_ID, F_name, L_name, NIC, email_Address, Password, Contact_No, Address) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
+            String sqlQuery = "INSERT INTO `customers_table` (cus_ID, F_name, L_name, NIC, email_Address, Password, Contact_No, Address) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,first_name);
@@ -105,7 +105,7 @@ public class userregClass {
                 lnameTxt.setText("");
                 NICtxt.setText("");
                 emailTxt.setText("");
-                //passwordField1.echoCharIsSet();
+                passwordField1.setText("  ");
                 contTxt.setText("");
                 addTxt.setText("");
 
