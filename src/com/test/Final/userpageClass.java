@@ -83,6 +83,13 @@ public class userpageClass {
                 orderDetails(id,frame);
             }
         });
+        settingsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                userframe.dispose();
+                new u
+            }
+        });
     }
 
 }
