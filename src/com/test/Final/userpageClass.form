@@ -112,26 +112,14 @@
           <text value="ORDER HISTORY"/>
         </properties>
       </component>
-      <scrollpane id="d5bb" binding="tablePanel">
+      <component id="2808f" class="javax.swing.JTable" binding="table1" default-binding="true">
         <constraints>
-          <grid row="5" column="1" row-span="1" col-span="6" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="1" row-span="1" col-span="6" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
         </constraints>
-        <properties>
-          <background color="-4480193"/>
-          <foreground color="-4480193"/>
-        </properties>
-        <border type="none"/>
-        <children>
-          <component id="e1f50" class="javax.swing.JTable" binding="table1" default-binding="true">
-            <constraints/>
-            <properties>
-              <background color="-4480193"/>
-              <font size="12"/>
-              <foreground color="-12500929"/>
-            </properties>
-          </component>
-        </children>
-      </scrollpane>
+        <properties/>
+      </component>
     </children>
   </grid>
 </form>
