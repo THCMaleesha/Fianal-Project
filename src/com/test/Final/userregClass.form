@@ -3,7 +3,7 @@
   <grid id="27dc6" binding="regPanel" layout-manager="GridLayoutManager" row-count="19" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="5" vgap="5">
     <margin top="20" left="20" bottom="20" right="20"/>
     <constraints>
-      <xy x="24" y="30" width="636" height="551"/>
+      <xy x="24" y="30" width="636" height="565"/>
     </constraints>
     <properties>
       <background color="-4480193"/>
@@ -82,6 +82,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
         </properties>
       </component>
       <component id="e474b" class="javax.swing.JTextField" binding="contTxt">
@@ -92,6 +93,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
         </properties>
       </component>
       <component id="9184a" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
@@ -102,6 +104,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
         </properties>
       </component>
       <component id="43e77" class="javax.swing.JTextField" binding="emailTxt">
@@ -112,6 +115,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
         </properties>
       </component>
       <component id="d3296" class="javax.swing.JTextField" binding="lnameTxt">
@@ -122,6 +126,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
         </properties>
       </component>
       <component id="4fe9d" class="javax.swing.JButton" binding="submitButton">
@@ -152,6 +157,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
         </properties>
       </component>
       <component id="7aed9" class="javax.swing.JLabel" binding="fnameLabel">
@@ -261,6 +267,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
         </properties>
       </component>
     </children>

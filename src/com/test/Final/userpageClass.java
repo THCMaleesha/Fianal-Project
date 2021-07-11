@@ -36,6 +36,29 @@ public class userpageClass {
 
     }
 
+    public void getTotalamount(String cusID, JFrame frame) {
+
+        try {
+            Connection connection = mysqlClass.getConnection();
+            String sqlQuery = " SELECT SUM(Amount) AS \"Total\" FROM `orders_table` WHERE cus_ID = ?";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setString(1,cusID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int total = resultSet.getInt(1);
+                amountLabel.setText(String.valueOf(total));
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(frame,"Oops !!!\nSomething went Wrong !!!\n"+exception.getMessage());
+        }
+    }
+
     private JPanel userPanel;
     private JLabel cusIDlabel;
     private JLabel cusNameLabel;
@@ -71,7 +94,6 @@ public class userpageClass {
         CANCELButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 userframe.dispose();
                 new loginClass();
             }
@@ -80,14 +102,20 @@ public class userpageClass {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JFrame frame = new JFrame();
-                orderDetails(id,frame);
+
+                try {
+                    orderDetails(id,frame);
+                    getTotalamount(id,frame);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+
             }
         });
         settingsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                userframe.dispose();
-                new u
+                new usetSettingsClass(id);
             }
         });
     }

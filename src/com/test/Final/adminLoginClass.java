@@ -14,7 +14,7 @@ public class adminLoginClass {
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "SELECT * FROM `admin-table` WHERE Password = ?";
+            String sqlQuery = "SELECT * FROM `admin_table` WHERE Password = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1, String.valueOf(password));

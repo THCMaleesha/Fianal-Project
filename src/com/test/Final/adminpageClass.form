@@ -63,6 +63,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
         </properties>
       </component>
       <vspacer id="9f5ba">
@@ -113,6 +114,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
         </properties>
       </component>
       <component id="5ed54" class="javax.swing.JButton" binding="cancelButton">

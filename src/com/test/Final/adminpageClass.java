@@ -18,7 +18,7 @@ public class adminpageClass {
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "INSERT INTO `receipts_table` (receipt_no, order_no, cus_ID, paid_amount) VALUES (NULL, ?, ?, ?)";
+            String sqlQuery = "INSERT INTO `receipt_table` (receipt_no, order_no, cus_ID, paid_amount) VALUES (NULL, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,ord_ID);
@@ -65,7 +65,7 @@ public class adminpageClass {
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "SELECT receipts_table.receipt_no FROM customers_table INNER JOIN receipts_table ON customers_table.cus_ID = receipts_table.cus_ID where receipts_table.cus_ID = ?";
+            String sqlQuery = "SELECT receipt_table.receipt_no FROM customers_table INNER JOIN receipt_table ON customers_table.cus_ID = receipt_table.cus_ID where receipt_table.cus_ID = ?";
 
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -212,21 +212,19 @@ public class adminpageClass {
                     createReceipt(cusId, msgframe, ordId,paid_mount);
                     delteOrder(cusId, msgframe);
                     getReceiptNum(msgframe, ordId);
+                    new receiptClass(cusId,cusName,totAmount,paid_mount,receiptNumber);
+                    adminpageFrame.dispose();
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
-
-
-
-
-
-
-                new receiptClass(cusId,cusName,totAmount,paid_mount,receiptNumber);
-                adminpageFrame.dispose();
-
-
             }
         });
 
+        settingsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new adminSettingClass();
+            }
+        });
     }
 }

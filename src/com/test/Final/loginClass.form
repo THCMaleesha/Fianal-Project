@@ -65,6 +65,7 @@
           <autoscrolls value="false"/>
           <background color="-4480193"/>
           <focusCycleRoot value="false"/>
+          <font size="16"/>
           <foreground color="-12501951"/>
           <name value=""/>
           <text value="email address"/>
@@ -160,6 +161,7 @@
         </constraints>
         <properties>
           <background color="-4480193"/>
+          <font size="16"/>
           <foreground color="-12501951"/>
           <text value="password"/>
         </properties>
