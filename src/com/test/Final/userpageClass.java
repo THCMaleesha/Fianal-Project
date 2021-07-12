@@ -5,11 +5,14 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.awt.event.ComponentAdapter;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Vector;
 
 public class userpageClass {
+
+    String ordNo,Amo;
 
     public void orderDetails(String cusID, JFrame frame){
         try {
@@ -20,12 +23,17 @@ public class userpageClass {
             preparedStatement.setString(1,cusID);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            DefaultTableModel table = (DefaultTableModel)table1.getModel();
-            table.setRowCount(0);
 
             while (resultSet.next()){
-                Object object[] = {resultSet.getString(1),resultSet.getString(2),resultSet.getString(3)};
+                ordNo = resultSet.getString(1);
+                Amo = resultSet.getString(3);
             }
+
+            Object[][] data = {{ordNo,Amo}};
+            table1.setModel(new DefaultTableModel(
+                    data,
+                    new String[] {" Order Number", " Amount"}
+            ));
 
             resultSet.close();
             preparedStatement.close();
@@ -35,6 +43,8 @@ public class userpageClass {
         }
 
     }
+
+
 
     public void getTotalamount(String cusID, JFrame frame) {
 
@@ -70,6 +80,8 @@ public class userpageClass {
     private JLabel amountLabel;
     private JButton orderHisButton;
     private JTable table1;
+    private JPanel tablePanel;
+    private JScrollPane tableScrollPane;
     private JFrame userframe;
 
     public userpageClass(String id,String firstName,String lastName,String emailgot){
