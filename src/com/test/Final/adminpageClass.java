@@ -212,7 +212,7 @@ public class adminpageClass {
                     createReceipt(cusId, msgframe, ordId,paid_mount);
                     delteOrder(cusId, msgframe);
                     getReceiptNum(msgframe, ordId);
-                    new receiptClass(cusId,cusName,totAmount,paid_mount,receiptNumber);
+                    new receiptClass(cusId,cusName,totAmount,paid_mount,receiptNumber,ordId);
                     adminpageFrame.dispose();
                 } catch (Exception exception) {
                     exception.printStackTrace();

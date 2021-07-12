@@ -24,16 +24,20 @@ public class userpageClass {
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            table1.setModel(new DefaultTableModel(
+                    null,
+                    new String[] {" Order Number", " Amount"}
+            ));
+
             while (resultSet.next()){
                 ordNo = resultSet.getString(1);
                 Amo = resultSet.getString(3);
+
+                String data[] = {ordNo,Amo};
+                    DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
+                    tableModel.addRow(data);
             }
 
-            Object[][] data = {{ordNo,Amo}};
-            table1.setModel(new DefaultTableModel(
-                    data,
-                    new String[] {" Order Number", " Amount"}
-            ));
 
             resultSet.close();
             preparedStatement.close();
@@ -43,8 +47,6 @@ public class userpageClass {
         }
 
     }
-
-
 
     public void getTotalamount(String cusID, JFrame frame) {
 
@@ -98,10 +100,8 @@ public class userpageClass {
         userframe.setVisible(true);
 
         cusIDlabel.setText(id);
-        cusNameLabel.setText(firstName+lastName);
+        cusNameLabel.setText(firstName+ " " +lastName);
         emailLabel.setText(emailgot);
-
-
 
         CANCELButton.addActionListener(new ActionListener() {
             @Override
@@ -121,7 +121,6 @@ public class userpageClass {
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
-
             }
         });
         settingsButton.addActionListener(new ActionListener() {
