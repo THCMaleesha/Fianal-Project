@@ -58,14 +58,14 @@ public class buynowClass {
         }
     }
 
-    public void createPrice(String item, String qunty, int amt){
+    public void createPrice(String item, int amt){
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "SELECT items_table.price_per_1 FROM items_table INNER JOIN quantities_table ON items_table.qty_no = quantities_table.qty_no where items_table.item_name = ? and quantities_table.qty_name = ?";
+            String sqlQuery = "SELECT price_per_1 FROM items_table where item_name = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,item);
-            preparedStatement.setString(2,qunty);
+            //preparedStatement.setString(2,qunty);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -99,6 +99,7 @@ public class buynowClass {
             }catch (Exception exception){
                 JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
             }
+            preparedStatement.close();
             connection.close();
 
         }catch (Exception exception){
@@ -117,15 +118,18 @@ public class buynowClass {
                     new String[] {"Number", " Item", "Quantity", "Price" }
             ));
 
+            int item_no = 1;
+
+
             while (resultSet.next()){
-                String item_no = resultSet.getString(1);
                 String itemName = resultSet.getString(2);
                 String amount = resultSet.getString(3);
                 String pri = resultSet.getString(4);
 
-                String data[] = {item_no,itemName,amount,pri};
+                String data[] = {String.valueOf(item_no),itemName,amount,pri};
                 DefaultTableModel tableModel = (DefaultTableModel) billTable.getModel();
                 tableModel.addRow(data);
+                item_no++;
             }
             resultSet.close();
             preparedStatement.close();
@@ -154,6 +158,49 @@ public class buynowClass {
         }
 }
 
+    public void addtoOrders(String id,int price){
+         try {
+            Connection connection = mysqlClass.getConnection();
+            String sqlQuery = "INSERT INTO `orders_table` (order_no , cus_ID, Amount) VALUES (NULL, ?, ?)";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+            preparedStatement.setString(1,id);
+            preparedStatement.setString(2, String.valueOf(price));
+
+            try {
+                preparedStatement.execute();
+
+            }catch (Exception exception){
+                JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
+            }
+            connection.close();
+
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
+        }
+    }
+
+    public void deleteNeworder(){
+        try {
+            Connection connection = mysqlClass.getConnection();
+            String sqlQuery = "DELETE FROM neworder_table";
+
+            PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+
+            try {
+                preparedStatement.execute();
+
+            }catch (Exception exception){
+                JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
+            }
+            connection.close();
+
+        }catch (Exception exception){
+            JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
+        }
+    }
+
+
 
     private JLabel itemLabel;
     private JLabel quantityLabel;
@@ -174,8 +221,9 @@ public class buynowClass {
     private JScrollPane scrlPane;
     private JTextField qtyTxt;
     private JComboBox ComboBox2;
-    private JButton clearButton;
     private JTextField totamountTxt;
+    private JTextField idTxt;
+    private JButton paynowButton;
     private JFrame buyframe;
 
     public buynowClass() {
@@ -210,19 +258,13 @@ public class buynowClass {
                 qtyAmount = Integer.parseInt(qtyTxt.getText());
 
                 try {
-                    createPrice(item,qty,qtyAmount);
+                    createPrice(item,qtyAmount);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
             }
         });
-        clearButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                qtyTxt.setText(" ");
-                textField1.setText(" ");
-            }
-        });
+
         ADDButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -231,6 +273,26 @@ public class buynowClass {
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
+            }
+        });
+        ADDTOORDERSButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String id = idTxt.getText();
+                String totalAmount = totamountTxt.getText();
+                try {
+                    addtoOrders(id, Integer.parseInt(totalAmount));
+                    deleteNeworder();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            }
+        });
+        paynowButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"Contact our keepers and pay your bill.\nThank YOU !!! Come Again !!!");
+                deleteNeworder();
             }
         });
     }

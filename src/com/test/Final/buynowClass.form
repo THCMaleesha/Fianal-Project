@@ -216,16 +216,6 @@
           <grid row="24" column="8" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
       </hspacer>
-      <component id="4a0e6" class="javax.swing.JButton" binding="clearButton">
-        <constraints>
-          <grid row="13" column="1" row-span="1" col-span="4" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <background color="-4480193"/>
-          <foreground color="-12500929"/>
-          <text value="CLEAR"/>
-        </properties>
-      </component>
       <vspacer id="6e535">
         <constraints>
           <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
@@ -243,7 +233,7 @@
           <foreground color="-12500929"/>
         </properties>
       </component>
-      <component id="7411" class="javax.swing.JTextField" default-binding="true">
+      <component id="7411" class="javax.swing.JTextField" binding="idTxt">
         <constraints>
           <grid row="21" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -285,7 +275,7 @@
           <text value="Customer ID"/>
         </properties>
       </component>
-      <component id="79338" class="javax.swing.JButton" default-binding="true">
+      <component id="79338" class="javax.swing.JButton" binding="paynowButton">
         <constraints>
           <grid row="23" column="3" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>

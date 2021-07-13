@@ -146,6 +146,8 @@ public class adminpageClass {
     private JButton cancelButton;
     private JPanel adminPanel;
     private JButton clearButton;
+    private JButton createOrderButton;
+    private JButton itemsetButton;
     private final JFrame adminpageFrame;
 
     public adminpageClass() {
@@ -224,6 +226,18 @@ public class adminpageClass {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new adminSettingClass();
+            }
+        });
+        createOrderButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new buynowClass();
+            }
+        });
+        itemsetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new itemUpdatesClass();
             }
         });
     }

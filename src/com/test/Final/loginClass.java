@@ -84,6 +84,7 @@ public class loginClass {
     private final JFrame loginFrame;
 
     public loginClass() {
+
         loginFrame = new JFrame("Customer Management Services");
         loginFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         loginFrame.setPreferredSize(new Dimension(600, 500));

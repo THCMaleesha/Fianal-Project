@@ -84,6 +84,7 @@ public class userpageClass {
     private JTable table1;
     private JPanel tablePanel;
     private JScrollPane tableScrollPane;
+    private JButton paynowButton;
     private JFrame userframe;
 
     public userpageClass(String id,String firstName,String lastName,String emailgot){
@@ -127,6 +128,18 @@ public class userpageClass {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new usetSettingsClass(id);
+            }
+        });
+        paynowButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,"Contact our keepers and pay your bill.\nThank YOU !!! Come Again !!!");
+            }
+        });
+        buyNowButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new buynowClass();
             }
         });
     }
