@@ -84,10 +84,9 @@ public class loginClass {
     private final JFrame loginFrame;
 
     public loginClass() {
-
-        loginFrame = new JFrame("Customer Management Services");
+        loginFrame =new JFrame("Customer Management Services");
         loginFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        loginFrame.setPreferredSize(new Dimension(600, 500));
+        loginFrame.setPreferredSize(new Dimension(600,500));
         loginFrame.setResizable(true);
 
         loginFrame.add(loginPanel);
@@ -95,6 +94,7 @@ public class loginClass {
         loginFrame.pack();
         loginFrame.setLocationRelativeTo(null);
         loginFrame.setVisible(true);
+
 
         signupButton.addActionListener(new ActionListener() {
             @Override

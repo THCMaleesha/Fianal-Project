@@ -26,9 +26,8 @@ public class userpageClass {
 
             table1.setModel(new DefaultTableModel(
                     null,
-                    new String[] {" Order Number", " Amount"}
+                    new String[] {"Order Number", "Amount"}
             ));
-
             while (resultSet.next()){
                 ordNo = resultSet.getString(1);
                 Amo = resultSet.getString(3);
@@ -37,8 +36,6 @@ public class userpageClass {
                     DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
                     tableModel.addRow(data);
             }
-
-
             resultSet.close();
             preparedStatement.close();
 
@@ -103,6 +100,7 @@ public class userpageClass {
         cusIDlabel.setText(id);
         cusNameLabel.setText(firstName+ " " +lastName);
         emailLabel.setText(emailgot);
+
 
         CANCELButton.addActionListener(new ActionListener() {
             @Override
