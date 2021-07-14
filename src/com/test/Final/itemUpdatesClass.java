@@ -136,6 +136,7 @@ public class itemUpdatesClass extends frameClass{
     private JTextField priceTxtupdate;
     private JPanel itemPanel;
     private JComboBox combobox2;
+    private JButton allButton;
 
     public itemUpdatesClass(){
 
@@ -175,6 +176,12 @@ public class itemUpdatesClass extends frameClass{
                     exception.printStackTrace();
                 }
 
+            }
+        });
+        allButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new alldetailsClass();
             }
         });
     }

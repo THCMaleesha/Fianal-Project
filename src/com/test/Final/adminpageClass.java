@@ -150,6 +150,7 @@ public class adminpageClass extends frameClass{
     private JButton clearButton;
     private JButton createOrderButton;
     private JButton itemsetButton;
+    private JButton allButton;
 
     public adminpageClass() {
         frame = setFrame(adminPanel,frame);
@@ -229,6 +230,12 @@ public class adminpageClass extends frameClass{
             @Override
             public void actionPerformed(ActionEvent e) {
                 new itemUpdatesClass();
+            }
+        });
+        allButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new alldetailsClass();
             }
         });
     }

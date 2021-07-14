@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
@@ -34,6 +35,29 @@ public class receiptClass extends frameClass{
                 JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
             }
         }
+
+    }
+
+    public void getReceipt(){
+        try {
+            PrintWriter out = new PrintWriter(new FileWriter("Receipt.txt"));
+            out.println("\t------------------RECEIPT------------------\n\t\tThank You !!!  Come Again!!!\n");
+            out.println("\t"+receiptLabel.getText()+"\t\t--\t"+receiptNoLabel.getText());
+            out.println("\t"+cusIDLabel.getText()+"\t\t\t--\t"+cusIDprint.getText());
+            out.println("\t"+cusNameLAbel.getText()+"\t\t--\t"+cusnamePrint.getText());
+            out.println("\t"+orderlbl.getText()+"\t\t--\t"+ordersLabel.getText());
+            out.println("\n");
+            out.println("\t"+totamountLabel.getText()+"\t\t--\t"+totAmountPrint.getText());
+            out.println("\t"+paidAmountLabel.getText()+"\t\t--\t"+paidAmountPrint.getText());
+            out.println("\t"+cusNameLAbel.getText()+"\t\t--\t"+cusnamePrint.getText());
+            out.println("\t"+balanceLabel.getText()+"\t\t\t\t--\t"+balancePrint.getText());
+            out.flush();
+            out.close();
+
+        } catch (IOException e1) {
+            System.err.println("Error occurred");
+            e1.printStackTrace();
+        }
     }
 
     private JPanel receiptPanel;
@@ -51,6 +75,8 @@ public class receiptClass extends frameClass{
     private JButton CONFIRMPAYMENTButton;
     private JButton cancelButton;
     private JLabel ordersLabel;
+    private JLabel receiptLabel;
+    private JLabel orderlbl;
 
     public receiptClass(String cusIDcame, String cusNamee, int tot_amountcame, int paid_amountcame, String receiptNum, String ordID){
 
@@ -76,7 +102,8 @@ public class receiptClass extends frameClass{
             @Override
             public void actionPerformed(ActionEvent e) {
                 createbalanceOrder(cusIDcame, balance);
+                getReceipt();
             }
         });
-    }
-}
+}}
+

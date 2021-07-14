@@ -12,7 +12,7 @@ public class frameClass {
 
         frame = new JFrame("Customer Management Services");
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(600, 500));
+        frame.setPreferredSize(new Dimension(800, 500));
         frame.setResizable(true);
 
         frame.add(p);

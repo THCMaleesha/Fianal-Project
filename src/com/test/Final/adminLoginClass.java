@@ -10,8 +10,6 @@ import java.sql.ResultSet;
 
 public class adminLoginClass extends frameClass{
 
-    private JFrame frame = null;
-
     public void adminLogin(char[] password,JFrame msgFrame) {
 
         try {
@@ -43,6 +41,7 @@ public class adminLoginClass extends frameClass{
         }
     }
 
+    private JFrame frame = null;
     private JLabel adlgLabel;
     private JPasswordField passwordField1;
     private JButton signinButton;

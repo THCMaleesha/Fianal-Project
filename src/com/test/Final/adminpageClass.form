@@ -232,6 +232,16 @@
           <text value="ITEM SETTINGS"/>
         </properties>
       </component>
+      <component id="e02fb" class="javax.swing.JButton" binding="allButton">
+        <constraints>
+          <grid row="4" column="7" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4480193"/>
+          <foreground color="-12500929"/>
+          <text value="ALL DETAILS"/>
+        </properties>
+      </component>
     </children>
   </grid>
 </form>

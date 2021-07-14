@@ -180,7 +180,7 @@
           <text value="Receipt Number"/>
         </properties>
       </component>
-      <component id="5de43" class="javax.swing.JLabel">
+      <component id="5de43" class="javax.swing.JLabel" binding="receiptLabel">
         <constraints>
           <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -190,7 +190,7 @@
           <text value="Receipt Number"/>
         </properties>
       </component>
-      <component id="bf3c4" class="javax.swing.JLabel">
+      <component id="bf3c4" class="javax.swing.JLabel" binding="orderlbl">
         <constraints>
           <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
