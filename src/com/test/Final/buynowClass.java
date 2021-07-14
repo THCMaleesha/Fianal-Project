@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class buynowClass {
+public class buynowClass extends frameClass{
+
+    private JFrame frame = null;
 
     static int price, qtyAmount;
     static String item,qty;
@@ -201,7 +203,6 @@ public class buynowClass {
     }
 
 
-
     private JLabel itemLabel;
     private JLabel quantityLabel;
     private JComboBox comboBox1;
@@ -224,19 +225,11 @@ public class buynowClass {
     private JTextField totamountTxt;
     private JTextField idTxt;
     private JButton paynowButton;
-    private JFrame buyframe;
+
 
     public buynowClass() {
-        buyframe = new JFrame("Customer Management Services");
-        buyframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        buyframe.setPreferredSize(new Dimension(600, 500));
-        buyframe.setResizable(true);
 
-        buyframe.add(buyPanel);
-
-        buyframe.pack();
-        buyframe.setLocationRelativeTo(null);
-        buyframe.setVisible(true);
+        frame = setFrame(buyPanel,frame);
 
         setComboBox1items();
         setComboBox2items();
@@ -245,7 +238,7 @@ public class buynowClass {
         CANCELButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                buyframe.dispose();
+                frame.dispose();
             }
         });
 

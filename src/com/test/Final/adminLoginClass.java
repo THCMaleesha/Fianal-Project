@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class adminLoginClass {
+public class adminLoginClass extends frameClass{
+
+    private JFrame frame = null;
 
     public void adminLogin(char[] password,JFrame msgFrame) {
 
@@ -27,7 +29,7 @@ public class adminLoginClass {
             }
             if (count == 1){
                 JOptionPane.showMessageDialog(msgFrame,"Login Successful !!!");
-                adminFrame.dispose();
+                frame.dispose();
                 new adminpageClass();
 
             }else{
@@ -47,24 +49,14 @@ public class adminLoginClass {
     private JButton cancelButton;
     private JPanel adlgPanel;
     private JLabel pswLabel;
-    private JFrame adminFrame;
 
     public adminLoginClass() {
-        adminFrame = new JFrame("Customer Management Services");
-        adminFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        adminFrame.setPreferredSize(new Dimension(600, 500));
-        adminFrame.setResizable(true);
-
-        adminFrame.add(adlgPanel);
-
-        adminFrame.pack();
-        adminFrame.setLocationRelativeTo(null);
-        adminFrame.setVisible(true);
+        frame = setFrame(adlgPanel,frame);
 
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adminFrame.dispose();
+                frame.dispose();
                 new loginClass();
             }
         });

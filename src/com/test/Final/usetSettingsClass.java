@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class usetSettingsClass {
+public class usetSettingsClass extends frameClass{
+
+    private JFrame frame = null;
 
     public void updateDetails(String ID,String fname,String lname,String nic,String email,char[] passw,String cont,String address){
         try {
@@ -58,22 +60,14 @@ public class usetSettingsClass {
     private JTextField emailTxt;
     private JTextField contTxt;
     private JTextField addTxt;
-    private JFrame frame;
+
 
     public usetSettingsClass(String ID){
 
         String cusID = ID;
+        frame = setFrame(updatePanel,frame);
 
-        frame = new JFrame("Customer Management Services");
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(600, 500));
-        frame.setResizable(true);
 
-        frame.add(updatePanel);
-
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
 
         updateButton.addActionListener(new ActionListener() {
             @Override

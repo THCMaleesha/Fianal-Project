@@ -8,8 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class loginClass {
+public class loginClass extends frameClass{
 
+    private JFrame frame = null;
     static String id,firstName,lastName,emailgot;
 
     public void userLogin(String email, char[] password,JFrame msgFrame) {
@@ -31,7 +32,7 @@ public class loginClass {
             if (count == 1){
                 JOptionPane.showMessageDialog(msgFrame,"Login Successful !!!");
                 userDetails(email,password,msgFrame);
-                loginFrame.dispose();
+                frame.dispose();
                 new userpageClass(id,firstName,lastName,emailgot);
 
             }else{
@@ -81,39 +82,27 @@ public class loginClass {
     private JButton cancelButton;
     private JButton adminButton;
     private JPasswordField passwordPasswordField;
-    private final JFrame loginFrame;
 
     public loginClass() {
-        loginFrame =new JFrame("Customer Management Services");
-        loginFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        loginFrame.setPreferredSize(new Dimension(600,500));
-        loginFrame.setResizable(true);
-
-        loginFrame.add(loginPanel);
-
-        loginFrame.pack();
-        loginFrame.setLocationRelativeTo(null);
-        loginFrame.setVisible(true);
-
+        frame = setFrame(loginPanel,frame);
 
         signupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.dispose();
+                frame.dispose();
                 new userregClass();
             }
         });
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                loginFrame.dispose();
+                frame.dispose();
             }
         });
         adminButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                loginFrame.dispose();
+                frame.dispose();
                 new adminLoginClass();
             }
         });

@@ -4,8 +4,37 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
-public class receiptClass {
+public class receiptClass extends frameClass{
+
+    private JFrame frame = null;
+
+    public void createbalanceOrder(String cusIDcame,int balance){
+        if (balance > 0){
+            try {
+                Connection connection = mysqlClass.getConnection();
+                String sqlQuery = "INSERT INTO `orders_table` (order_no, cus_ID, Amount) VALUES (NULL, ?, ?)";
+
+                PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+                preparedStatement.setString(1,cusIDcame);
+                preparedStatement.setString(2, String.valueOf(balance));
+
+                try {
+                    preparedStatement.execute();
+                    JOptionPane.showMessageDialog(null,"Congratulations !!!\nPayment Successful !!!");
+
+                }catch (Exception exception){
+                    JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
+                }
+                connection.close();
+
+            }catch (Exception exception){
+                JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
+            }
+        }
+    }
 
     private JPanel receiptPanel;
     private JLabel cusIDLabel;
@@ -19,23 +48,13 @@ public class receiptClass {
     private JLabel totAmountPrint;
     private JLabel paidAmountPrint;
     private JLabel balancePrint;
-    private JButton PRINTButton;
+    private JButton CONFIRMPAYMENTButton;
     private JButton cancelButton;
     private JLabel ordersLabel;
-    private JFrame receiptframe;
 
     public receiptClass(String cusIDcame, String cusNamee, int tot_amountcame, int paid_amountcame, String receiptNum, String ordID){
 
-        receiptframe = new JFrame("Customer Management Services");
-        receiptframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        receiptframe.setPreferredSize(new Dimension(600, 500));
-        receiptframe.setResizable(true);
-
-        receiptframe.add(receiptPanel);
-
-        receiptframe.pack();
-        receiptframe.setLocationRelativeTo(null);
-        receiptframe.setVisible(true);
+        frame = setFrame(receiptPanel,frame);
 
         receiptNoLabel.setText(receiptNum);
         cusIDprint.setText(cusIDcame);
@@ -49,8 +68,14 @@ public class receiptClass {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                receiptframe.dispose();
+                frame.dispose();
                 new adminpageClass();
+            }
+        });
+        CONFIRMPAYMENTButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createbalanceOrder(cusIDcame, balance);
             }
         });
     }

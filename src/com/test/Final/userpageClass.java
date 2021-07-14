@@ -10,9 +10,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
-public class userpageClass {
+public class userpageClass extends frameClass{
 
-    String ordNo,Amo;
+    private JFrame frame = null;
+    static String ordNo,Amo;
 
     public void orderDetails(String cusID, JFrame frame){
         try {
@@ -82,20 +83,10 @@ public class userpageClass {
     private JPanel tablePanel;
     private JScrollPane tableScrollPane;
     private JButton paynowButton;
-    private JFrame userframe;
 
     public userpageClass(String id,String firstName,String lastName,String emailgot){
 
-        userframe = new JFrame("Customer Management Services");
-        userframe.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        userframe.setPreferredSize(new Dimension(600, 500));
-        userframe.setResizable(true);
-
-        userframe.add(userPanel);
-
-        userframe.pack();
-        userframe.setLocationRelativeTo(null);
-        userframe.setVisible(true);
+        frame = setFrame(userPanel,frame);
 
         cusIDlabel.setText(id);
         cusNameLabel.setText(firstName+ " " +lastName);
@@ -105,7 +96,7 @@ public class userpageClass {
         CANCELButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                userframe.dispose();
+                frame.dispose();
                 new loginClass();
             }
         });

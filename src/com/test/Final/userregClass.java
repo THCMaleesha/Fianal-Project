@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class userregClass {
+public class userregClass extends frameClass{
+
+    private JFrame frame = null;
 
     public void userRegistration(String first_name, String last_name, String NIC, String email_add, char[] password, String contact_no, String address, JFrame msgFrame) {
 
@@ -39,7 +41,6 @@ public class userregClass {
         }
     }
 
-    private JFrame regFrame;
     private JPanel regPanel;
     private JLabel fnameLabel;
     private JTextField fnameTxt;
@@ -60,21 +61,12 @@ public class userregClass {
     private JTextField NICtxt;
 
     public userregClass() {
-        regFrame = new JFrame("Customer Management Services");
-        regFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        regFrame.setPreferredSize(new Dimension(600, 500));
-        regFrame.setResizable(true);
-
-        regFrame.add(regPanel);
-
-        regFrame.pack();
-        regFrame.setLocationRelativeTo(null);
-        regFrame.setVisible(true);
+        frame = setFrame(regPanel,frame);
 
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                regFrame.dispose();
+                frame.dispose();
                 new loginClass();
             }
         });

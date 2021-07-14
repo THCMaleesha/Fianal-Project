@@ -8,9 +8,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class itemUpdatesClass {
+public class itemUpdatesClass extends frameClass{
 
     static String qtyNo;
+    private JFrame frame = null;
 
     public void setComboBox1items(){
         try {
@@ -135,19 +136,10 @@ public class itemUpdatesClass {
     private JTextField priceTxtupdate;
     private JPanel itemPanel;
     private JComboBox combobox2;
-    private JFrame itemFrame;
 
-    public itemUpdatesClass() {
-        itemFrame = new JFrame("Customer Management Services");
-        itemFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        itemFrame.setPreferredSize(new Dimension(600, 500));
-        itemFrame.setResizable(true);
+    public itemUpdatesClass(){
 
-        itemFrame.add(itemPanel);
-
-        itemFrame.pack();
-        itemFrame.setLocationRelativeTo(null);
-        itemFrame.setVisible(true);
+        frame = setFrame(itemPanel,frame);
 
         setComboBox1items();
         setComboBox2items();
@@ -155,7 +147,7 @@ public class itemUpdatesClass {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                frame.dispose();
             }
         });
         ADDITEMButton.addActionListener(new ActionListener() {

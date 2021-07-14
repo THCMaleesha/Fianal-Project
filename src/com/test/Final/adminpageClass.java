@@ -8,7 +8,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class adminpageClass {
+public class adminpageClass extends frameClass{
+
+    private JFrame frame = null;
 
     static int total = 0;
     static String ordId;
@@ -65,7 +67,7 @@ public class adminpageClass {
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "SELECT receipt_table.receipt_no FROM customers_table INNER JOIN receipt_table ON customers_table.cus_ID = receipt_table.cus_ID where receipt_table.cus_ID = ?";
+            String sqlQuery = "SELECT receipt_no FROM receipt_table where order_no = ?";
 
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
@@ -148,24 +150,14 @@ public class adminpageClass {
     private JButton clearButton;
     private JButton createOrderButton;
     private JButton itemsetButton;
-    private final JFrame adminpageFrame;
 
     public adminpageClass() {
-        adminpageFrame =new JFrame("Customer Management Services");
-        adminpageFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        adminpageFrame.setPreferredSize(new Dimension(600,500));
-        adminpageFrame.setResizable(true);
-
-        adminpageFrame.add(adminPanel);
-
-        adminpageFrame.pack();
-        adminpageFrame.setLocationRelativeTo(null);
-        adminpageFrame.setVisible(true);
+        frame = setFrame(adminPanel,frame);
 
         addCusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                adminpageFrame.dispose();
+                frame.dispose();
                 new userregClass();
             }
         });
@@ -194,8 +186,7 @@ public class adminpageClass {
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                adminpageFrame.dispose();
+                frame.dispose();
                 new loginClass();
             }
         });
@@ -215,7 +206,7 @@ public class adminpageClass {
                     delteOrder(cusId, msgframe);
                     getReceiptNum(msgframe, ordId);
                     new receiptClass(cusId,cusName,totAmount,paid_mount,receiptNumber,ordId);
-                    adminpageFrame.dispose();
+                    frame.dispose();
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }

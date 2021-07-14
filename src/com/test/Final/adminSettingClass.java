@@ -7,7 +7,9 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class adminSettingClass {
+public class adminSettingClass extends frameClass{
+
+    private JFrame frame = null;
 
     public void updateDetails(char[] passw ,char[] newpass){
         try {
@@ -40,20 +42,9 @@ public class adminSettingClass {
     private JLabel currentpwLabel;
     private JLabel newpwLabel;
     private JButton cancelButton;
-    private final JFrame frame;
-
 
     public adminSettingClass(){
-        frame = new JFrame("Customer Management Services");
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(600, 500));
-        frame.setResizable(true);
-
-        frame.add(adminsetPanel);
-
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        frame = setFrame(adminsetPanel,frame);
 
         updateButton.addActionListener(new ActionListener() {
             @Override
