@@ -5,7 +5,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -64,7 +66,7 @@ public class alldetailsClass extends frameClass{
                 String ctno = resultSet.getString(7);
                 String address = resultSet.getString(8);
 
-                String data[] = {cusid,fname,lname,nic,email,ctno,address};
+                String[] data = {cusid,fname,lname,nic,email,ctno,address};
                 DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
                 tableModel.addRow(data);
             }
@@ -96,7 +98,7 @@ public class alldetailsClass extends frameClass{
                 String qty = resultSet.getString(3);
                 String price = resultSet.getString(4);
 
-                String data[] = {itemid,item,qty,price};
+                String[] data = {itemid,item,qty,price};
                 DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
                 tableModel.addRow(data);
             }
@@ -109,6 +111,30 @@ public class alldetailsClass extends frameClass{
 
     }
 
+    public void toExcel(JTable table, File file){
+        try{
+            TableModel model = table.getModel();
+            FileWriter excel = new FileWriter(file);
+
+            for(int i = 0; i < model.getColumnCount(); i++){
+                excel.write(model.getColumnName(i) + "\t");
+            }
+
+            excel.write("\n");
+
+            for(int i=0; i< model.getRowCount(); i++) {
+                for(int j=0; j < model.getColumnCount(); j++) {
+                    excel.write(model.getValueAt(i,j).toString()+"\t");
+                }
+                excel.write("\n");
+            }
+
+            excel.close();
+
+        }catch(IOException e){ System.out.println(e); }
+    }
+
+
     private JFrame frame = null;
     private JButton USERSButton;
     private JButton ORDERSButton;
@@ -117,6 +143,7 @@ public class alldetailsClass extends frameClass{
     private JLabel tableheadLabel;
     private JPanel allPanel;
     private JButton cancelButton;
+    private JButton excelButton;
 
     public alldetailsClass(){
         frame = setFrame(allPanel,frame);
@@ -158,6 +185,12 @@ public class alldetailsClass extends frameClass{
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+            }
+        });
+        excelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                toExcel(table1, new File("Data Table.xls"));
             }
         });
     }
