@@ -30,7 +30,7 @@ public class alldetailsClass extends frameClass{
                 String cusid = resultSet.getString(2);
                 String Amo = resultSet.getString(3);
 
-                String data[] = {ordNo,cusid,Amo};
+                String[] data = {ordNo,cusid,Amo};
                 DefaultTableModel tableModel = (DefaultTableModel) table1.getModel();
                 tableModel.addRow(data);
             }
@@ -108,8 +108,6 @@ public class alldetailsClass extends frameClass{
         }
 
     }
-
-
 
     private JFrame frame = null;
     private JButton USERSButton;
