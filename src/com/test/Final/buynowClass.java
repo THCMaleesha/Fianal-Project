@@ -2,9 +2,13 @@ package com.test.Final;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -225,6 +229,7 @@ public class buynowClass extends frameClass{
     private JTextField totamountTxt;
     private JTextField idTxt;
     private JButton paynowButton;
+    private JButton printButton;
 
 
     public buynowClass() {
@@ -286,6 +291,12 @@ public class buynowClass extends frameClass{
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null,"Contact our keepers and pay your bill.\nThank YOU !!! Come Again !!!");
                 deleteNeworder();
+            }
+        });
+        printButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
             }
         });
     }

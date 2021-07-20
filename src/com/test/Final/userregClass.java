@@ -66,8 +66,8 @@ public class userregClass extends frameClass{
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
                 new loginClass();
+                frame.dispose();
             }
         });
 

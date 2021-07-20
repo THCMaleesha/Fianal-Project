@@ -60,11 +60,11 @@ public class usetSettingsClass extends frameClass{
     private JTextField emailTxt;
     private JTextField contTxt;
     private JTextField addTxt;
+    private JTextField idTxt;
 
 
-    public usetSettingsClass(String ID){
+    public usetSettingsClass(){
 
-        String cusID = ID;
         frame = setFrame(updatePanel,frame);
 
 
@@ -73,8 +73,9 @@ public class usetSettingsClass extends frameClass{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String fname,lname, nic, email,cont, address;
+                String id,fname,lname, nic, email,cont, address;
 
+                id = idTxt.getText();
                 fname = fnameTxt.getText();
                 lname =lnameTxt.getText();
                 nic = nicTxt.getText();
@@ -84,7 +85,7 @@ public class usetSettingsClass extends frameClass{
                 address = addTxt.getText();
 
                 try {
-                    updateDetails(ID,fname,lname,nic,email,passw,cont,address);
+                    updateDetails(id,fname,lname,nic,email,passw,cont,address);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }

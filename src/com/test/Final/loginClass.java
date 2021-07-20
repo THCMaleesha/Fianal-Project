@@ -82,6 +82,8 @@ public class loginClass extends frameClass{
     private JButton cancelButton;
     private JButton adminButton;
     private JPasswordField passwordPasswordField;
+    private JButton setting;
+    private JButton buyButton;
 
     public loginClass() {
         frame = setFrame(loginPanel,frame);
@@ -120,6 +122,18 @@ public class loginClass extends frameClass{
                     exception.printStackTrace();
                 }
 
+            }
+        });
+        buyButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new buynowClass();
+            }
+        });
+        setting.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new usetSettingsClass();
             }
         });
     }

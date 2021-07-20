@@ -3,10 +3,10 @@
   <grid id="27dc6" binding="allPanel" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="20" bottom="20" right="20"/>
     <constraints>
-      <xy x="20" y="20" width="739" height="460"/>
+      <xy x="20" y="20" width="1189" height="1032"/>
     </constraints>
     <properties>
-      <background color="-4480193"/>
+      <background color="-9323845"/>
       <foreground color="-12500929"/>
     </properties>
     <border type="none"/>
@@ -16,17 +16,17 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-4480193"/>
-          <foreground color="-12500929"/>
+          <background color="-13978437"/>
+          <foreground color="-16514044"/>
           <text value="USERS"/>
         </properties>
       </component>
       <component id="fd586" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="3" row-span="3" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <icon value="Untitled.png"/>
+          <icon value="documents.png"/>
           <text value=""/>
         </properties>
       </component>
@@ -35,8 +35,8 @@
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-4480193"/>
-          <foreground color="-12500929"/>
+          <background color="-13978437"/>
+          <foreground color="-16514044"/>
           <text value="ORDERS"/>
         </properties>
       </component>
@@ -45,8 +45,8 @@
           <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-4480193"/>
-          <foreground color="-12500929"/>
+          <background color="-13978437"/>
+          <foreground color="-16514044"/>
           <text value="ITEMS"/>
         </properties>
       </component>
@@ -56,7 +56,7 @@
         </constraints>
         <properties>
           <font size="20"/>
-          <foreground color="-12500929"/>
+          <foreground color="-16514044"/>
           <text value=""/>
         </properties>
       </component>
@@ -73,15 +73,17 @@
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-4480193"/>
-              <foreground color="-12500929"/>
+              <background color="-8866117"/>
+              <foreground color="-16514044"/>
             </properties>
             <border type="none"/>
             <children>
               <component id="49dbd" class="javax.swing.JTable" binding="table1" default-binding="true">
                 <constraints/>
                 <properties>
+                  <background color="-9323845"/>
                   <font size="18"/>
+                  <foreground color="-16514044"/>
                 </properties>
               </component>
             </children>
@@ -93,8 +95,8 @@
           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-4480193"/>
-          <foreground color="-12500929"/>
+          <background color="-13978437"/>
+          <foreground color="-16514044"/>
           <text value="CANCEL"/>
         </properties>
       </component>
@@ -103,8 +105,8 @@
           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-4480193"/>
-          <foreground color="-12500929"/>
+          <background color="-13978437"/>
+          <foreground color="-16514044"/>
           <text value="EXCEL"/>
         </properties>
       </component>

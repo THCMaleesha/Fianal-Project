@@ -48,6 +48,7 @@ public class adminLoginClass extends frameClass{
     private JButton cancelButton;
     private JPanel adlgPanel;
     private JLabel pswLabel;
+    private JButton settingButton;
 
     public adminLoginClass() {
         frame = setFrame(adlgPanel,frame);
@@ -72,6 +73,12 @@ public class adminLoginClass extends frameClass{
                     exception.printStackTrace();
                 }
 
+            }
+        });
+        settingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new adminSettingClass();
             }
         });
     }

@@ -116,7 +116,7 @@ public class userpageClass extends frameClass{
         settingsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new usetSettingsClass(id);
+                new usetSettingsClass();
             }
         });
         paynowButton.addActionListener(new ActionListener() {
