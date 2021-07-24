@@ -17,7 +17,7 @@ public class alldetailsClass extends frameClass{
     public void orderDetails(){
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "SELECT * FROM `orders_table`";
+            String sqlQuery = "SELECT * FROM `postponed_bill_table`";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 

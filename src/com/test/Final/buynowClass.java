@@ -92,7 +92,7 @@ public class buynowClass extends frameClass{
     public void addtoCart(String item, int amt,int Pri){
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "INSERT INTO `neworder_table` (count, item, quantity, price) VALUES (NULL, ?, ?, ?)";
+            String sqlQuery = "INSERT INTO `order_table` (count, item, quantity, price) VALUES (NULL, ?, ?, ?)";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,item);
@@ -114,7 +114,7 @@ public class buynowClass extends frameClass{
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "SELECT * FROM `neworder_table`";
+            String sqlQuery = "SELECT * FROM `order_table`";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -146,7 +146,7 @@ public class buynowClass extends frameClass{
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = " SELECT SUM(price) AS \"Total\" FROM `neworder_table`";
+            String sqlQuery = " SELECT SUM(price) AS \"Total\" FROM `order_table`";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -167,7 +167,7 @@ public class buynowClass extends frameClass{
     public void addtoOrders(String id,int price){
          try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "INSERT INTO `orders_table` (order_no , cus_ID, Amount) VALUES (NULL, ?, ?)";
+            String sqlQuery = "INSERT INTO `postponed_bill_table` (order_no , cus_ID, Amount) VALUES (NULL, ?, ?)";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,id);
@@ -189,7 +189,7 @@ public class buynowClass extends frameClass{
     public void deleteNeworder(){
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "DELETE FROM neworder_table";
+            String sqlQuery = "DELETE FROM order_table";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
 

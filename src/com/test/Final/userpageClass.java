@@ -18,7 +18,7 @@ public class userpageClass extends frameClass{
     public void orderDetails(String cusID, JFrame frame){
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "SELECT * FROM `orders_table` WHERE cus_ID = ?";
+            String sqlQuery = "SELECT * FROM `postponed_bill_table` WHERE cus_ID = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,cusID);
@@ -50,7 +50,7 @@ public class userpageClass extends frameClass{
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = " SELECT SUM(Amount) AS \"Total\" FROM `orders_table` WHERE cus_ID = ?";
+            String sqlQuery = " SELECT SUM(Amount) AS \"Total\" FROM `postponed_bill_table` WHERE cus_ID = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,cusID);

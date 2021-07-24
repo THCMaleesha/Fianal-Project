@@ -8,35 +8,30 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class receiptClass extends frameClass{
 
+import javax.swing.*;
+
+public class out_receiptClass extends frameClass{
     private JFrame frame = null;
 
-    public void createbalanceOrder(String cusIDcame,int balance){
-        if (balance > 0){
-            try {
-                Connection connection = mysqlClass.getConnection();
-                String sqlQuery = "INSERT INTO `postponed_bill_table` (order_no, cus_ID, Amount) VALUES (NULL, ?, ?)";
+    private JLabel receiptLabel;
+    private JLabel receiptNoLabel;
+    private JLabel cusIDLabel;
+    private JLabel cusNameLAbel;
+    private JLabel totamountLabel;
+    private JLabel paidAmountLabel;
+    private JLabel balanceLabel;
+    private JLabel cusIDprint;
+    private JLabel cusnamePrint;
+    private JLabel totAmountPrint;
+    private JLabel paidAmountPrint;
+    private JLabel balancePrint;
+    private JLabel orderlbl;
+    private JLabel ordersLabel;
+    private JButton cancelButton;
+    private JButton CONFIRMPAYMENTButton;
+    private JPanel outrecPanel;
 
-                PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
-                preparedStatement.setString(1,cusIDcame);
-                preparedStatement.setString(2, String.valueOf(balance));
-
-                try {
-                    preparedStatement.execute();
-                    JOptionPane.showMessageDialog(null,"Congratulations !!!\nPayment Successful !!!");
-
-                }catch (Exception exception){
-                    JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
-                }
-                connection.close();
-
-            }catch (Exception exception){
-                JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!"+exception.getMessage());
-            }
-        }
-
-    }
 
     public void getReceipt(){
         try {
@@ -60,27 +55,10 @@ public class receiptClass extends frameClass{
         }
     }
 
-    private JPanel receiptPanel;
-    private JLabel cusIDLabel;
-    private JLabel receiptNoLabel;
-    private JLabel cusNameLAbel;
-    private JLabel totamountLabel;
-    private JLabel paidAmountLabel;
-    private JLabel balanceLabel;
-    private JLabel cusIDprint;
-    private JLabel cusnamePrint;
-    private JLabel totAmountPrint;
-    private JLabel paidAmountPrint;
-    private JLabel balancePrint;
-    private JButton CONFIRMPAYMENTButton;
-    private JButton cancelButton;
-    private JLabel ordersLabel;
-    private JLabel receiptLabel;
-    private JLabel orderlbl;
 
-    public receiptClass(String cusIDcame, String cusNamee, int tot_amountcame, int paid_amountcame, String receiptNum, String ordID){
+    public out_receiptClass(String cusIDcame, String cusNamee, int tot_amountcame, int paid_amountcame, String receiptNum, String ordID){
 
-        frame = setFrame(receiptPanel,frame);
+        frame = setFrame(outrecPanel,frame);
 
         receiptNoLabel.setText(receiptNum);
         cusIDprint.setText(cusIDcame);
@@ -101,9 +79,8 @@ public class receiptClass extends frameClass{
         CONFIRMPAYMENTButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                createbalanceOrder(cusIDcame, balance);
                 getReceipt();
             }
         });
-}}
+    }}
 

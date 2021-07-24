@@ -15,6 +15,8 @@ public class adminpageClass extends frameClass{
     static int total = 0;
     static String ordId;
     static String cusId,cusName,receiptNumber;
+    static int totAmount,paid_mount;
+    static int out_receipt_no = 0;
 
     public void createReceipt(String cus_ID, JFrame frame, String ord_ID, int paid_amount) {
 
@@ -44,7 +46,7 @@ public class adminpageClass extends frameClass{
     public void delteOrder(String cus_ID, JFrame frame){
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "DELETE FROM `orders_table` WHERE `orders_table`.`cus_ID` = ?";
+            String sqlQuery = "DELETE FROM `postponed_bill_table` WHERE `postponed_bill_table`.`cus_ID` = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,cus_ID);
@@ -90,7 +92,7 @@ public class adminpageClass extends frameClass{
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = " SELECT SUM(Amount) AS \"Total\" FROM `orders_table` WHERE cus_ID = ?";
+            String sqlQuery = " SELECT SUM(Amount) AS \"Total\" FROM `postponed_bill_table` WHERE cus_ID = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,cusID);
@@ -113,7 +115,7 @@ public class adminpageClass extends frameClass{
 
         try {
             Connection connection = mysqlClass.getConnection();
-            String sqlQuery = "SELECT customers_table.F_name, customers_table.L_name,orders_table.order_no FROM customers_table INNER JOIN orders_table ON customers_table.cus_ID = orders_table.cus_ID where orders_table.cus_ID = ?";
+            String sqlQuery = "SELECT customers_table.F_name, customers_table.L_name,postponed_bill_table.order_no FROM customers_table INNER JOIN postponed_bill_table ON customers_table.cus_ID = postponed_bill_table.cus_ID where postponed_bill_table.cus_ID = ?";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
             preparedStatement.setString(1,cusID);
@@ -151,6 +153,7 @@ public class adminpageClass extends frameClass{
     private JButton createOrderButton;
     private JButton itemsetButton;
     private JButton allButton;
+    private JButton outpayment;
 
     public adminpageClass() {
         frame = setFrame(adminPanel,frame);
@@ -195,7 +198,6 @@ public class adminpageClass extends frameClass{
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                int totAmount,paid_mount;
                 cusId = cusIDTxt.getText();
                 cusName = cusNameShowLabel.getText();
                 totAmount = total;
@@ -236,6 +238,14 @@ public class adminpageClass extends frameClass{
             @Override
             public void actionPerformed(ActionEvent e) {
                 new alldetailsClass();
+            }
+        });
+        outpayment.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                out_receipt_no+=1;
+                paid_mount = Integer.parseInt(addAmountTxt.getText());
+                new out_receiptClass("NONE","OUT CUSTOMER",paid_mount,paid_mount,String.valueOf(out_receipt_no),"NONE");
             }
         });
     }

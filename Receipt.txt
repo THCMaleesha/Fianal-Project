@@ -1,0 +1,13 @@
+	------------------RECEIPT------------------
+		Thank You !!!  Come Again!!!
+
+	Receipt Number		--	1
+	Customer ID			--	NONE
+	Customer Name		--	OUT CUSTOMER
+	Order Numbers		--	NONE
+
+
+	Total Amount		--	1200
+	Paid  Amount		--	1200
+	Customer Name		--	OUT CUSTOMER
+	Balance				--	0

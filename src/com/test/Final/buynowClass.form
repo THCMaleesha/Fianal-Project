@@ -168,7 +168,7 @@
           <foreground color="-12500929"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
-          <text value="BILL"/>
+          <text value="INVOICE"/>
         </properties>
       </component>
       <vspacer id="807ad">
@@ -247,7 +247,7 @@
         <properties>
           <background color="-4475220"/>
           <foreground color="-12500929"/>
-          <text value="ADD TO ORDERS"/>
+          <text value="ADD TO POSTPONEDS"/>
         </properties>
       </component>
       <component id="e5942" class="javax.swing.JLabel" binding="totamountLabel">
