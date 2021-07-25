@@ -171,7 +171,7 @@
         <properties>
           <background color="-4483180"/>
           <foreground color="-12500929"/>
-          <text value="ORDER HISTORY"/>
+          <text value="POSTPONED BILLS"/>
         </properties>
       </component>
       <hspacer id="136ea">

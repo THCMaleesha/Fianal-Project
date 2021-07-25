@@ -6,12 +6,13 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.StringTokenizer;
+import java.util.Vector;
+import java.util.logging.Logger;
 
 public class buynowClass extends frameClass{
 
@@ -206,6 +207,34 @@ public class buynowClass extends frameClass{
         }
     }
 
+    public void printinvoice(){
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("invoice.txt"));
+            PrintWriter fileWriter = new PrintWriter(bufferedWriter);
+
+            for (int i = 0; i < billTable.getRowCount() + 1; i++) {
+                String headers = String.valueOf(billTable.getColumnName(i));
+                fileWriter.print(headers);
+                fileWriter.print("\t");
+            }
+
+            fileWriter.println("");
+            for (int i = 0; i < billTable.getRowCount(); ++i) {
+                for (int j = 0; j < billTable.getColumnCount(); ++j) {
+                    String s = billTable.getValueAt(i, j).toString();
+                    fileWriter.print(s);
+                    fileWriter.print("\t\t");
+                }
+                fileWriter.println("");
+            }
+            fileWriter.close();
+            JOptionPane.showMessageDialog(null, "Success. File saved to payrollData.txt");
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Failure");
+
+        }
+    }
+
 
     private JLabel itemLabel;
     private JLabel quantityLabel;
@@ -296,7 +325,7 @@ public class buynowClass extends frameClass{
         printButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                printinvoice();
             }
         });
     }
