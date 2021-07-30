@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//all details
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -12,9 +14,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+//extends class from frameClass
+
 public class alldetailsClass extends frameClass{
 
+    //method to get postponed bills' details
     public void orderDetails(){
+
+        //get all details of the postponed details and show them in a JTable
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT * FROM `postponed_bill_table`";
@@ -44,7 +51,10 @@ public class alldetailsClass extends frameClass{
         }
     }
 
+    //method to get customer details
     public void userDetails(){
+
+        //get all customers' details in the system and show them in a JTable
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT * FROM `customers_table`";
@@ -79,7 +89,10 @@ public class alldetailsClass extends frameClass{
 
     }
 
+    //method to get items' details
     public void itemsDetails(){
+
+        //get details from the items table & show in a JTable
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT items_table.item_code,items_table.item_name,quantities_table.qty_name,items_table.price_per_1 FROM items_table INNER JOIN quantities_table ON items_table.qty_no = quantities_table.qty_no";
@@ -111,7 +124,10 @@ public class alldetailsClass extends frameClass{
 
     }
 
+    //method to get details in to a Excel sheet
     public void toExcel(JTable table, File file){
+
+        //insert JTable data in to a Excel sheet and download it
         try{
             TableModel model = table.getModel();
             FileWriter excel = new FileWriter(file);
@@ -146,8 +162,11 @@ public class alldetailsClass extends frameClass{
     private JButton excelButton;
 
     public alldetailsClass(){
+
+        //set frame
         frame = setFrame(allPanel,frame);
 
+        //show postponed bill details
         ORDERSButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,6 +178,8 @@ public class alldetailsClass extends frameClass{
                 }
             }
         });
+
+        //show customers details
         USERSButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -170,6 +191,8 @@ public class alldetailsClass extends frameClass{
                 }
             }
         });
+
+        //show items details
         ITEMSButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -181,12 +204,16 @@ public class alldetailsClass extends frameClass{
                 }
             }
         });
+
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
             }
         });
+
+        //download the Excel sheet of requested data
         excelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

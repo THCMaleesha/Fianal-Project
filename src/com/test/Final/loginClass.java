@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//customer login
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,13 +10,19 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+//extends the class from frameClass
+
 public class loginClass extends frameClass{
 
     private JFrame frame = null;
+
+    //create static variables
     static String id,firstName,lastName,emailgot;
 
+    //method to authenticate customer login
     public void userLogin(String email, char[] password,JFrame msgFrame) {
 
+        //check the email and password with the database
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT * FROM `customers_table` WHERE email_Address = ? and Password = ?";
@@ -29,6 +37,8 @@ public class loginClass extends frameClass{
             while (resultSet.next()){
                 count += 1;
             }
+
+            //if login details matched, give the access to customers page with customer details
             if (count == 1){
                 JOptionPane.showMessageDialog(msgFrame,"Login Successful !!!");
                 userDetails(email,password,msgFrame);
@@ -47,8 +57,10 @@ public class loginClass extends frameClass{
         }
     }
 
+    //method to get customer details
     public void userDetails(String email, char[] password,JFrame msgFrame) {
 
+        //get details from customer table where given password & details
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT * FROM `customers_table` WHERE email_Address = ? and Password = ?";
@@ -86,8 +98,11 @@ public class loginClass extends frameClass{
     private JButton buyButton;
 
     public loginClass() {
+
+        //set frame
         frame = setFrame(loginPanel,frame);
 
+        //sign up
         signupButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,12 +110,16 @@ public class loginClass extends frameClass{
                 new userregClass();
             }
         });
+
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
             }
         });
+
+        //admin login
         adminButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -108,6 +127,8 @@ public class loginClass extends frameClass{
                 new adminLoginClass();
             }
         });
+
+        // check login
         signinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,12 +145,16 @@ public class loginClass extends frameClass{
 
             }
         });
+
+        //order creations
         buyButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new buynowClass();
             }
         });
+
+        //update customer details
         setting.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

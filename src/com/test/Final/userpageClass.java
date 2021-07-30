@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//customer page
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -10,12 +12,17 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
+//extends the class from frameClass
+
 public class userpageClass extends frameClass{
 
     private JFrame frame = null;
     static String ordNo,Amo;
 
+    //method to get postponed bill history
     public void orderDetails(String cusID, JFrame frame){
+
+        //get the postponed bill details of the customer and show them in a JTable
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT * FROM `postponed_bill_table` WHERE cus_ID = ?";
@@ -46,8 +53,10 @@ public class userpageClass extends frameClass{
 
     }
 
+    //method to get total postponed bill amount
     public void getTotalamount(String cusID, JFrame frame) {
 
+        //get the SUM of the amount of postponed bills
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = " SELECT SUM(Amount) AS \"Total\" FROM `postponed_bill_table` WHERE cus_ID = ?";
@@ -86,13 +95,14 @@ public class userpageClass extends frameClass{
 
     public userpageClass(String id,String firstName,String lastName,String emailgot){
 
+        //set frame
         frame = setFrame(userPanel,frame);
 
         cusIDlabel.setText(id);
         cusNameLabel.setText(firstName+ " " +lastName);
         emailLabel.setText(emailgot);
 
-
+        //exit from the frame
         CANCELButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -100,6 +110,8 @@ public class userpageClass extends frameClass{
                 new loginClass();
             }
         });
+
+        //show postponed bill history
         orderHisButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -113,18 +125,24 @@ public class userpageClass extends frameClass{
                 }
             }
         });
+
+        //update details
         settingsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new usetSettingsClass();
             }
         });
+
+        //create a payment
         paynowButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(null,"Contact our keepers and pay your bill.\nThank YOU !!! Come Again !!!");
             }
         });
+
+        //create an order
         buyNowButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

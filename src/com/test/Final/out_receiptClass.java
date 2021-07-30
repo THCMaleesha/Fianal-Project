@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//instant receipts
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +12,8 @@ import java.sql.PreparedStatement;
 
 
 import javax.swing.*;
+
+//extends class from frameClass
 
 public class out_receiptClass extends frameClass{
     private JFrame frame = null;
@@ -33,7 +37,10 @@ public class out_receiptClass extends frameClass{
     private JPanel outrecPanel;
 
 
+    //method to print receipt
     public void getReceipt(){
+
+        //write details of the receipt in a .txt file and download
         try {
             PrintWriter out = new PrintWriter(new FileWriter("Receipt.txt"));
             out.println("\t------------------RECEIPT------------------\n\t\tThank You !!!  Come Again!!!\n");
@@ -55,11 +62,12 @@ public class out_receiptClass extends frameClass{
         }
     }
 
-
     public out_receiptClass(String cusIDcame, String cusNamee, int tot_amountcame, int paid_amountcame, String receiptNum, String ordID){
 
+        //set frame
         frame = setFrame(outrecPanel,frame);
 
+        //set lable text as the receipt details
         receiptNoLabel.setText(receiptNum);
         cusIDprint.setText(cusIDcame);
         cusnamePrint.setText(cusNamee);
@@ -69,6 +77,7 @@ public class out_receiptClass extends frameClass{
         balancePrint.setText(String.valueOf(balance));
         ordersLabel.setText(ordID);
 
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -76,6 +85,8 @@ public class out_receiptClass extends frameClass{
                 new adminpageClass();
             }
         });
+
+        //confirm the payment and download the receipt
         CONFIRMPAYMENTButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

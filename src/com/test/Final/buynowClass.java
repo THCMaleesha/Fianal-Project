@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//order creation
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
@@ -14,14 +16,20 @@ import java.util.StringTokenizer;
 import java.util.Vector;
 import java.util.logging.Logger;
 
+//extends class from frameClass
+
 public class buynowClass extends frameClass{
 
     private JFrame frame = null;
 
+    //create static variables for use in whole class
     static int price, qtyAmount;
     static String item,qty;
 
+    //method to get database details into a combo box
     public void setComboBox1items(){
+
+        //get details from the items table's item name column and set them in a combo box
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT item_name FROM `items_table`";
@@ -43,7 +51,10 @@ public class buynowClass extends frameClass{
         }
     }
 
+    //method to get database details into a combo box
     public void setComboBox2items(){
+
+        //get details from the quantity table's quantity name column and set them in a combo box
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT qty_name FROM `quantities_table`";
@@ -65,7 +76,10 @@ public class buynowClass extends frameClass{
         }
     }
 
+    //method to create price
     public void createPrice(String item, int amt){
+
+        //with the selected item name, quantity type & given quantity , get the price from the items table and create net amount
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT price_per_1 FROM items_table where item_name = ?";
@@ -90,7 +104,11 @@ public class buynowClass extends frameClass{
         }
     }
 
+    //method to crate invoice
     public void addtoCart(String item, int amt,int Pri){
+
+        /*insert in to order table, that item name,quantity and amount of the requested item
+        add those details in a JTable as the invoice*/
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "INSERT INTO `order_table` (count, item, quantity, price) VALUES (NULL, ?, ?, ?)";
@@ -165,7 +183,10 @@ public class buynowClass extends frameClass{
         }
 }
 
+    //method to create a postponed bill
     public void addtoOrders(String id,int price){
+
+        //created invoice add to postponed bills table
          try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "INSERT INTO `postponed_bill_table` (order_no , cus_ID, Amount) VALUES (NULL, ?, ?)";
@@ -187,7 +208,10 @@ public class buynowClass extends frameClass{
         }
     }
 
+    //method to delete the invoice
     public void deleteNeworder(){
+
+        //delete the created invoice
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "DELETE FROM order_table";
@@ -207,7 +231,10 @@ public class buynowClass extends frameClass{
         }
     }
 
+    //method to print the invoice
     public void printinvoice(){
+
+        //write the JTable data in a .txt file and download
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("invoice.txt"));
             PrintWriter fileWriter = new PrintWriter(bufferedWriter);
@@ -263,12 +290,13 @@ public class buynowClass extends frameClass{
 
     public buynowClass() {
 
+        //set frame
         frame = setFrame(buyPanel,frame);
 
         setComboBox1items();
         setComboBox2items();
 
-
+        //exit from frame
         CANCELButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -276,6 +304,7 @@ public class buynowClass extends frameClass{
             }
         });
 
+        //get the price of a item
         GOButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -292,6 +321,7 @@ public class buynowClass extends frameClass{
             }
         });
 
+        //add to invoice
         ADDButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -302,6 +332,8 @@ public class buynowClass extends frameClass{
                 }
             }
         });
+
+        //crete a postponed bill
         ADDTOORDERSButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -315,6 +347,8 @@ public class buynowClass extends frameClass{
                 }
             }
         });
+
+        //pay the bill
         paynowButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -322,6 +356,8 @@ public class buynowClass extends frameClass{
                 deleteNeworder();
             }
         });
+
+        //print the invoice
         printButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

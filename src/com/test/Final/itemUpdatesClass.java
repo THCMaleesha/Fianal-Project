@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//item updates
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,12 +10,17 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+//extends class from frameClass
+
 public class itemUpdatesClass extends frameClass{
 
     static String qtyNo;
     private JFrame frame = null;
 
+    //method to get database details into a combo box
     public void setComboBox1items(){
+
+        //get details from the quantity table's quantity name column and set them in a combo box
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT qty_name FROM `quantities_table`";
@@ -35,7 +42,10 @@ public class itemUpdatesClass extends frameClass{
         }
     }
 
+    //method to get database details into a combo box
     public void setComboBox2items(){
+
+        //get details from the items table's item name column and set them in a combo box
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT item_name FROM `items_table`";
@@ -57,8 +67,10 @@ public class itemUpdatesClass extends frameClass{
         }
     }
 
+    //method to add a item to store
     public void addItem(String name, String qty, String price){
 
+        //add the item name, then select the quantity type
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT qty_no FROM quantities_table where qty_name = ?";
@@ -78,6 +90,7 @@ public class itemUpdatesClass extends frameClass{
             JOptionPane.showMessageDialog(null,"Oops !!!\nSomething went Wrong !!!\n"+exception.getMessage());
         }
 
+        //insert item name, quantity type & price into items table
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "INSERT INTO `items_table` (item_code  , item_name, qty_no , price_per_1) VALUES (NULL, ?, ?,?)";
@@ -102,7 +115,10 @@ public class itemUpdatesClass extends frameClass{
         }
     }
 
+    //method to update price
     public void updatePrice(String name, String price){
+
+        //select the item with given item name and update the price
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "UPDATE items_table SET price_per_1 = ? Where  item_name = ?";
@@ -140,17 +156,21 @@ public class itemUpdatesClass extends frameClass{
 
     public itemUpdatesClass(){
 
+        //set frame
         frame = setFrame(itemPanel,frame);
 
         setComboBox1items();
         setComboBox2items();
 
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
             }
         });
+
+        //add a item to store
         ADDITEMButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -165,6 +185,8 @@ public class itemUpdatesClass extends frameClass{
                 }
             }
         });
+
+        //update an item price
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -178,6 +200,8 @@ public class itemUpdatesClass extends frameClass{
 
             }
         });
+
+        //get all details of the customers, postponed bills and items
         allButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

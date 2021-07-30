@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//Admin's login page
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,10 +10,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+//extends the class from frameClass for set the frame
+
 public class adminLoginClass extends frameClass{
 
+
+    //method for authenticate login
     public void adminLogin(char[] password,JFrame msgFrame) {
 
+        //select the details with user given email & password, if that details in the database give the access for login
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT * FROM `admin_table` WHERE Password = ?";
@@ -51,8 +58,11 @@ public class adminLoginClass extends frameClass{
     private JButton settingButton;
 
     public adminLoginClass() {
+
+        //set the frame
         frame = setFrame(adlgPanel,frame);
 
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -60,6 +70,8 @@ public class adminLoginClass extends frameClass{
                 new loginClass();
             }
         });
+
+        //sign in to the system
         signinButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -75,6 +87,8 @@ public class adminLoginClass extends frameClass{
 
             }
         });
+
+        //update the password
         settingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//receipt
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,11 +10,16 @@ import java.io.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+//extends the class from frameClass
+
 public class receiptClass extends frameClass{
 
     private JFrame frame = null;
 
+    //method to create a new postponed bill with balance of the payment
     public void createbalanceOrder(String cusIDcame,int balance){
+
+        //if the payment create a balance again create a new postponed bill with the balance
         if (balance > 0){
             try {
                 Connection connection = mysqlClass.getConnection();
@@ -38,7 +45,10 @@ public class receiptClass extends frameClass{
 
     }
 
+    //method to print receipt
     public void getReceipt(){
+
+        //write details of the receipt in a .txt file and download
         try {
             PrintWriter out = new PrintWriter(new FileWriter("Receipt.txt"));
             out.println("\t\t\t\t------------------RECEIPT------------------\n\t\tThank You !!!  Come Again!!!\n");
@@ -80,8 +90,10 @@ public class receiptClass extends frameClass{
 
     public receiptClass(String cusIDcame, String cusNamee, int tot_amountcame, int paid_amountcame, String receiptNum, String ordID){
 
+        //set frame
         frame = setFrame(receiptPanel,frame);
 
+        //set lable text as the receipt details
         receiptNoLabel.setText(receiptNum);
         cusIDprint.setText(cusIDcame);
         cusnamePrint.setText(cusNamee);
@@ -91,6 +103,7 @@ public class receiptClass extends frameClass{
         balancePrint.setText(String.valueOf(balance));
         ordersLabel.setText(ordID);
 
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,6 +111,8 @@ public class receiptClass extends frameClass{
                 new adminpageClass();
             }
         });
+
+        //confirm the payment and download the receipt
         CONFIRMPAYMENTButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

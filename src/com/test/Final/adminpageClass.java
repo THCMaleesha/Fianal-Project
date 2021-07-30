@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//admin page
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,9 +10,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+//extends the class from frameClass
+
 public class adminpageClass extends frameClass{
 
     private JFrame frame = null;
+
+
+    //create static variables for use in the whole class
 
     static int total = 0;
     static String ordId;
@@ -18,8 +25,12 @@ public class adminpageClass extends frameClass{
     static int totAmount,paid_mount;
     static int out_receipt_no = 0;
 
+
+    //method for create receipt
     public void createReceipt(String cus_ID, JFrame frame, String ord_ID, int paid_amount) {
 
+
+        //insert data into the receipt table
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "INSERT INTO `receipt_table` (receipt_no, order_no, cus_ID, paid_amount) VALUES (NULL, ?, ?, ?)";
@@ -43,7 +54,10 @@ public class adminpageClass extends frameClass{
         }
     }
 
+    //method for delete postponed orders' bills
     public void delteOrder(String cus_ID, JFrame frame){
+
+        //delete paid bill details from the postponed bill table
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "DELETE FROM `postponed_bill_table` WHERE `postponed_bill_table`.`cus_ID` = ?";
@@ -65,8 +79,10 @@ public class adminpageClass extends frameClass{
         }
     }
 
+    //method for get receipt number
     public void getReceiptNum(JFrame frame, String ord_ID) {
 
+        //get the receipt number from receipt table
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT receipt_no FROM receipt_table where order_no = ?";
@@ -88,8 +104,10 @@ public class adminpageClass extends frameClass{
         }
     }
 
+    //method to calculate total amount
     public void getTotalamount(String cusID, JFrame frame) {
 
+        //get the SUM value of amount column in the postponed bill table with a specific customer id
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = " SELECT SUM(Amount) AS \"Total\" FROM `postponed_bill_table` WHERE cus_ID = ?";
@@ -111,8 +129,10 @@ public class adminpageClass extends frameClass{
         }
     }
 
+    //method to search postponed orders bills
     public void searchOrders(String cusID, JFrame frame) {
 
+        //get customer name from the customers table & get order id from the postponed bill table
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "SELECT customers_table.F_name, customers_table.L_name,postponed_bill_table.order_no FROM customers_table INNER JOIN postponed_bill_table ON customers_table.cus_ID = postponed_bill_table.cus_ID where postponed_bill_table.cus_ID = ?";
@@ -156,8 +176,11 @@ public class adminpageClass extends frameClass{
     private JButton outpayment;
 
     public adminpageClass() {
+
+        //set frame
         frame = setFrame(adminPanel,frame);
 
+        //add customer to the system
         addCusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -165,6 +188,8 @@ public class adminpageClass extends frameClass{
                 new userregClass();
             }
         });
+
+        //search postponed bill details of a customer
         GOButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -179,6 +204,8 @@ public class adminpageClass extends frameClass{
                 }
             }
         });
+
+        //to clear showed details
         clearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -187,6 +214,8 @@ public class adminpageClass extends frameClass{
                 totAmountShowLabel.setText( "xxxxxxxxxxxxxxxxxxxxxxxxx" );
             }
         });
+
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -194,6 +223,8 @@ public class adminpageClass extends frameClass{
                 new loginClass();
             }
         });
+
+        //to create a payment with a receipt
         payButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -216,30 +247,39 @@ public class adminpageClass extends frameClass{
             }
         });
 
+        //update password
         settingsButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new adminSettingClass();
             }
         });
+
+        //create an order for a customer
         createOrderButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new buynowClass();
             }
         });
+
+        //add items to the store
         itemsetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new itemUpdatesClass();
             }
         });
+
+        //get all database details
         allButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 new alldetailsClass();
             }
         });
+
+        //to create a payment of non postponed bills
         outpayment.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

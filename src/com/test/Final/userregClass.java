@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//registration
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,12 +10,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+//extends the class from frameClass
+
 public class userregClass extends frameClass{
 
     private JFrame frame = null;
 
+    //method to crate a profile
     public void userRegistration(String first_name, String last_name, String NIC, String email_add, char[] password, String contact_no, String address, JFrame msgFrame) {
 
+        //insert user details into customers table and create a new profile
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "INSERT INTO `customers_table` (cus_ID, F_name, L_name, NIC, email_Address, Password, Contact_No, Address) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
@@ -61,8 +67,11 @@ public class userregClass extends frameClass{
     private JTextField NICtxt;
 
     public userregClass() {
+
+        //set frame
         frame = setFrame(regPanel,frame);
 
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -71,6 +80,7 @@ public class userregClass extends frameClass{
             }
         });
 
+        //submit details
         submitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -79,6 +89,7 @@ public class userregClass extends frameClass{
                 char[] psword;
                 JFrame msgFrame = new JFrame();
 
+                //get user given details
                 first_name = fnameTxt.getText();
                 last_name = lnameTxt.getText();
                 NIC = NICtxt.getText();
@@ -93,6 +104,7 @@ public class userregClass extends frameClass{
                     exception.printStackTrace();
                 }
 
+                //set text boxes as null again
                 fnameTxt.setText("");
                 lnameTxt.setText("");
                 NICtxt.setText("");

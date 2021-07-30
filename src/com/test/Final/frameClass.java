@@ -1,10 +1,15 @@
 package com.test.Final;
 
+//create a class for set frames in the system
+
 import javax.swing.*;
 import java.awt.*;
 
 public class frameClass {
+
     public JFrame frame;
+
+    //create a method to set the frame with passed panel and frame
 
     public JFrame setFrame(JPanel p, JFrame f){
 

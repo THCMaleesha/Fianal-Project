@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//admin settings class
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -7,11 +9,16 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
+//extends class from frameClass
+
 public class adminSettingClass extends frameClass{
 
     private JFrame frame = null;
 
+    //method to update password
     public void updateDetails(char[] passw ,char[] newpass){
+
+        //search the current password, if it is update to the new
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "UPDATE admin_table SET Password = ? Where Password = ? ";
@@ -44,8 +51,11 @@ public class adminSettingClass extends frameClass{
     private JButton cancelButton;
 
     public adminSettingClass(){
+
+        //set frame
         frame = setFrame(adminsetPanel,frame);
 
+        //update details
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,6 +77,8 @@ public class adminSettingClass extends frameClass{
 
             }
         });
+
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

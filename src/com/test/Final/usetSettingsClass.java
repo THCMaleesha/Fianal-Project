@@ -1,5 +1,7 @@
 package com.test.Final;
 
+//updating
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
@@ -9,11 +11,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+//extends the class from frameClass
+
 public class usetSettingsClass extends frameClass{
 
     private JFrame frame = null;
 
+    //method to update a profile
     public void updateDetails(String ID,String fname,String lname,String nic,String email,char[] passw,String cont,String address){
+
+        //update user details in customers table with given id
         try {
             Connection connection = mysqlClass.getConnection();
             String sqlQuery = "UPDATE customers_table SET F_name = ?, L_name = ?, NIC = ?, email_Address = ?, Password = ?, Contact_No = ?, Address = ?" + "Where  cus_ID = ?";
@@ -65,16 +72,17 @@ public class usetSettingsClass extends frameClass{
 
     public usetSettingsClass(){
 
+        //set frame
         frame = setFrame(updatePanel,frame);
 
-
-
+        //update details
         updateButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 String id,fname,lname, nic, email,cont, address;
 
+                //get user given details
                 id = idTxt.getText();
                 fname = fnameTxt.getText();
                 lname =lnameTxt.getText();
@@ -90,6 +98,7 @@ public class usetSettingsClass extends frameClass{
                     exception.printStackTrace();
                 }
 
+                //set text boxes as null again
                 fnameTxt.setText("");
                 lnameTxt.setText("");
                 nicTxt.setText("");
@@ -100,6 +109,7 @@ public class usetSettingsClass extends frameClass{
             }
         });
 
+        //exit from the frame
         cancelButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
