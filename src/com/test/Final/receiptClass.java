@@ -41,16 +41,16 @@ public class receiptClass extends frameClass{
     public void getReceipt(){
         try {
             PrintWriter out = new PrintWriter(new FileWriter("Receipt.txt"));
-            out.println("\t------------------RECEIPT------------------\n\t\tThank You !!!  Come Again!!!\n");
+            out.println("\t\t\t\t------------------RECEIPT------------------\n\t\tThank You !!!  Come Again!!!\n");
             out.println("\t"+receiptLabel.getText()+"\t\t--\t"+receiptNoLabel.getText());
-            out.println("\t"+cusIDLabel.getText()+"\t\t\t--\t"+cusIDprint.getText());
+            out.println("\t"+cusIDLabel.getText()+"\t\t--\t"+cusIDprint.getText());
             out.println("\t"+cusNameLAbel.getText()+"\t\t--\t"+cusnamePrint.getText());
             out.println("\t"+orderlbl.getText()+"\t\t--\t"+ordersLabel.getText());
             out.println("\n");
             out.println("\t"+totamountLabel.getText()+"\t\t--\t"+totAmountPrint.getText());
             out.println("\t"+paidAmountLabel.getText()+"\t\t--\t"+paidAmountPrint.getText());
             out.println("\t"+cusNameLAbel.getText()+"\t\t--\t"+cusnamePrint.getText());
-            out.println("\t"+balanceLabel.getText()+"\t\t\t\t--\t"+balancePrint.getText());
+            out.println("\t"+balanceLabel.getText()+"\t\t\t--\t"+balancePrint.getText());
             out.flush();
             out.close();
 
