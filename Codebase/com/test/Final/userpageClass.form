@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.test.Final.userpageClass">
+  <grid id="27dc6" binding="userPanel" layout-manager="GridLayoutManager" row-count="16" column-count="13" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="30" left="50" bottom="10" right="50"/>
+    <constraints>
+      <xy x="20" y="20" width="1617" height="1281"/>
+    </constraints>
+    <properties>
+      <background color="-4477785"/>
+      <foreground color="-4480193"/>
+    </properties>
+    <border type="line"/>
+    <children>
+      <vspacer id="963bd">
+        <constraints>
+          <grid row="9" column="12" row-span="7" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="815f3" class="javax.swing.JButton" binding="settingsButton" default-binding="true">
+        <constraints>
+          <grid row="0" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4483180"/>
+          <foreground color="-12500929"/>
+          <text value="Settings"/>
+        </properties>
+      </component>
+      <component id="b5a1" class="javax.swing.JButton" binding="buyNowButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4483180"/>
+          <foreground color="-12500929"/>
+          <text value="Buy Now"/>
+        </properties>
+      </component>
+      <grid id="c1448" binding="tablePanel" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="4" column="1" row-span="2" col-span="7" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4480193"/>
+          <font size="16"/>
+          <foreground color="-12500929"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <scrollpane id="ad37d" binding="tableScrollPane">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-4477785"/>
+              <font size="16"/>
+              <foreground color="-4480193"/>
+            </properties>
+            <border type="line" title=""/>
+            <children>
+              <component id="2808f" class="javax.swing.JTable" binding="table1" default-binding="true">
+                <constraints/>
+                <properties>
+                  <background color="-4477785"/>
+                  <font size="16"/>
+                  <foreground color="-12500929"/>
+                  <gridColor color="-4474252"/>
+                  <preferredScrollableViewportSize width="600" height="100"/>
+                  <selectionBackground color="-12500929"/>
+                  <selectionForeground color="-4480193"/>
+                </properties>
+                <clientProperties>
+                  <JTable.autoStartsEdit class="java.lang.Boolean" value="false"/>
+                </clientProperties>
+              </component>
+            </children>
+          </scrollpane>
+        </children>
+      </grid>
+      <component id="ab746" class="javax.swing.JLabel" binding="cusIDlabel">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-12500929"/>
+          <font size="18"/>
+          <foreground color="-12500929"/>
+          <text value="CUS ID"/>
+        </properties>
+      </component>
+      <component id="32f29" class="javax.swing.JLabel" binding="cusNameLabel">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="18"/>
+          <foreground color="-12500929"/>
+          <text value="NAME"/>
+        </properties>
+      </component>
+      <component id="18455" class="javax.swing.JLabel" binding="emailLabel">
+        <constraints>
+          <grid row="2" column="1" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="16"/>
+          <foreground color="-12500929"/>
+          <text value="email"/>
+        </properties>
+      </component>
+      <component id="dae88" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="18"/>
+          <foreground color="-12500929"/>
+          <text value="Customer ID"/>
+        </properties>
+      </component>
+      <component id="fe832" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="18"/>
+          <foreground color="-12500929"/>
+          <text value="Customer Name"/>
+        </properties>
+      </component>
+      <component id="1fbc" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="18"/>
+          <foreground color="-12500929"/>
+          <text value="Customer email"/>
+        </properties>
+      </component>
+      <vspacer id="a396c">
+        <constraints>
+          <grid row="9" column="10" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="6add9">
+        <constraints>
+          <grid row="12" column="6" row-span="3" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="caf18">
+        <constraints>
+          <grid row="11" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="1635c">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="7263c">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="97419" class="javax.swing.JButton" binding="orderHisButton">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4483180"/>
+          <foreground color="-12500929"/>
+          <text value="POSTPONED BILLS"/>
+        </properties>
+      </component>
+      <hspacer id="136ea">
+        <constraints>
+          <grid row="15" column="9" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="830e2" class="javax.swing.JLabel" binding="totamountLabel">
+        <constraints>
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="18"/>
+          <foreground color="-12500929"/>
+          <text value="Total Amount"/>
+        </properties>
+      </component>
+      <component id="fc103" class="javax.swing.JLabel" binding="amountLabel">
+        <constraints>
+          <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="18"/>
+          <foreground color="-12500929"/>
+          <text value="xxxxxxxxxxxxxxxxxx"/>
+        </properties>
+      </component>
+      <vspacer id="e403b">
+        <constraints>
+          <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="57c20" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="4" column="9" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <icon value="customer.jpg"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <hspacer id="ee277">
+        <constraints>
+          <grid row="4" column="8" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="62b7d" class="javax.swing.JButton" binding="paynowButton">
+        <constraints>
+          <grid row="2" column="10" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4483180"/>
+          <foreground color="-12500929"/>
+          <text value="PAY NOW"/>
+        </properties>
+      </component>
+      <component id="14879" class="javax.swing.JButton" binding="CANCELButton" default-binding="true">
+        <constraints>
+          <grid row="11" column="10" row-span="2" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-4483180"/>
+          <foreground color="-12500929"/>
+          <text value="CANCEL"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
